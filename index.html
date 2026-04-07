@@ -239,6 +239,40 @@
 
 <footer>
     © 2026 — Sidoine Ahizigbe • 
+    <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 30px; font-size: 1.8rem;">
+        <a href="https://linkedin.com/in/ton-profil" target="_blank" title="LinkedIn" style="color: #0077b5; transition: var(--transition);"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/ton-username" target="_blank" title="GitHub" style="color: #ffffff; transition: var(--transition);"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/ton-compte" target="_blank" title="X (Twitter)" style="color: #1da1f2; transition: var(--transition);"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://instagram.com/ton-compte" target="_blank" title="Instagram" style="color: #e1306c; transition: var(--transition);"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61577561325801" target="_blank" title="Facebook" style="color: #1877f2; transition: var(--transition);"><i class="fab fa-facebook"></i></a>
+        <a href="https://youtube.com/ton-compte" target="_blank" title="YouTube" style="color: #ff0000; transition: var(--transition);"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <p style="font-size: 0.8rem; color: var(--text-dim);">Lien direct de mon portfolio :</p>
+        <a href="https://marius-design.my.canva.site/ahizigbe-sidoine" style="color: var(--secondary-accent); text-decoration: none; font-weight: 600;">sidoine-portfolio.vercel.app</a>
+    </div>
+
+    <p style="font-size: 0.8rem; color: var(--text-dim);">&copy; 2026 Sidoine Ahizigbe.</p>
+</footer>
+
+    <a href="https://wa.me/2290195498359" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // 1. Custom Cursor
+        const cursor = document.querySelector('#cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // 2. Sticky Navbar & Active Links
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('sticky', window.scrollY > 0);
+        });
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
