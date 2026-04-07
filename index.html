@@ -1,79 +1,293 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sidoine Ahizigbe | Portfolio</title>
-  <meta name="description" content="Portfolio professionnel de Sidoine Ahizigbe">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sidoine Ahizigbe | Ingénieur & Entrepreneur Digital</title>
+    <meta name="description" content="Portfolio de Sidoine Ahizigbe, étudiant en Génie Énergétique à l'UNSTIM et entrepreneur digital au Bénin.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --accent-primary: #7000ff; 
+            --accent-secondary: #00d4ff; 
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f0f0f0;
+            --text-dim: #a0a0a0;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* --- BACKGROUND EFFECTS --- */
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 40px 40px; z-index: -1;
+        }
+
+        .bg-glow {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
+            z-index: -1; filter: blur(80px);
+            animation: pulseGlow 10s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.3); }
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed; top: 0; width: 100%; display: flex;
+            justify-content: space-between; align-items: center;
+            padding: 20px 8%; z-index: 1000;
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 800; color: #fff; text-decoration: none; }
+        .logo span { color: var(--accent-secondary); }
+
+        nav a { color: var(--text-dim); text-decoration: none; margin-left: 25px; font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
+        nav a:hover { color: var(--accent-secondary); }
+
+        .cta-nav { background: var(--accent-primary); padding: 10px 22px; border-radius: 50px; color: #fff !important; }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh; display: flex; align-items: center;
+            justify-content: space-between; padding: 0 10%;
+        }
+
+        .hero-text h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 15px; }
+        
+        .typewriter { color: var(--accent-secondary); border-right: 3px solid var(--accent-secondary); animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        .hero-photo { position: relative; width: clamp(250px, 30vw, 400px); height: clamp(250px, 30vw, 400px); }
+        .hero-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            border: 2px solid var(--accent-primary); animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+
+        /* --- SECTIONS --- */
+        .section { padding: 100px 10%; }
+        h2 { font-size: 2.2rem; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); }
+
+        /* Grilles */
+        .cards, .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+
+        .card {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            padding: 30px; border-radius: 20px; transition: var(--transition);
+            backdrop-filter: blur(5px); text-align: center;
+        }
+        .card:hover { border-color: var(--accent-secondary); transform: translateY(-10px); background: rgba(255,255,255,0.05); }
+
+        .project-card { background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); transition: var(--transition); }
+        .project-img { width: 100%; height: 200px; background: #111; overflow: hidden; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .project-card:hover .project-img img { transform: scale(1.1); }
+        .project-info { padding: 20px; }
+
+        /* --- SOCIAL LINKS (7 ICONS) --- */
+        .social-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .social-circle {
+            width: 55px; height: 55px; border-radius: 50%; background: var(--glass);
+            border: 1px solid var(--glass-border); display: flex; align-items: center;
+            justify-content: center; color: #fff; text-decoration: none; font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        .social-circle:hover {
+            transform: rotate(360deg) scale(1.1);
+            border-color: var(--accent-secondary);
+            color: var(--accent-secondary);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* --- RESPONSIVITÉ MOBILE --- */
+        @media (max-width: 968px) {
+            header { padding: 15px 5%; }
+            nav { display: none; } /* On cache la nav texte pour le mobile */
+            .hero { flex-direction: column-reverse; text-align: center; justify-content: center; padding-top: 80px; }
+            .hero-text h1 { font-size: 2.8rem; margin-top: 30px; }
+            .hero-photo { width: 250px; height: 250px; }
+            .section { padding: 60px 5%; }
+        }
+
+        footer { padding: 50px; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-dim); }
+
+        .btn { padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; transition: var(--transition); }
+        .primary { background: var(--accent-primary); color: #fff; }
+        .outline { border: 1px solid var(--glass-border); color: #fff; margin-left: 10px; }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Sidoine.</div>
-  <nav>
-    <a href="#about">À propos</a>
-    <a href="#skills">Compétences</a>
-    <a href="#projects">Projets</a>
-    <a href="#contact" class="cta">Contact</a>
-  </nav>
+<div class="grid-bg"></div>
+<div class="bg-glow"></div>
+
+<header id="header">
+    <a href="#" class="logo">Sidoine<span>.</span></a>
+    <nav>
+        <a href="#about">À propos</a>
+        <a href="#skills">Compétences</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact" class="cta-nav">Contact</a>
+    </nav>
 </header>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Sidoine Ahizigbe</h1>
-    <p>Construire aujourd’hui les compétences qui créent les opportunités de demain.</p>
-    <div class="buttons">
-      <a href="#contact" class="btn primary">Me contacter</a>
-      <a href="cv.pdf" class="btn outline">Télécharger CV</a>
+<section class="hero" id="home">
+    <div class="hero-text" data-aos="fade-right">
+        <h1>Sidoine Ahizigbe</h1>
+        <p style="font-size: 1.5rem; font-weight: 600; color: #fff; margin-bottom: 10px;">
+            Expert en <span class="typewriter" id="typewriter"></span>
+        </p>
+        <p style="max-width: 500px; margin-bottom: 30px; color: var(--text-dim);">
+            Étudiant en Génie Énergétique (UNSTIM) & Entrepreneur Digital. Je fusionne rigueur technique et créativité numérique.
+        </p>
+        <div class="buttons">
+            <a href="#contact" class="btn primary">Me contacter</a>
+            <a href="cv.pdf" class="btn outline"><i class="fas fa-download"></i> CV</a>
+        </div>
     </div>
-  </div>
 
-  <div class="hero-photo">
-    <img src="sidoine-ahizigbe.jpg" alt="Sidoine Ahizigbe">
-  </div>
+    <div class="hero-photo" data-aos="zoom-in">
+        <img src="sidoine-ahizigbe.jpg" alt="Sidoine Ahizigbe">
+    </div>
 </section>
 
 <section id="about" class="section">
-  <h2>À propos</h2>
-  <p>
-    Je suis <strong>Sidoine Ahizigbe</strong>, étudiant en génie énergétique et procédés à l’UNSTIM.
-    Passionné par la communication digitale, la création de contenus et l’entrepreneuriat,
-    j’accompagne des projets et des événements dans leur visibilité et leur impact.
-  </p>
+    <h2 data-aos="fade-up">À propos</h2>
+    <div class="card" style="text-align: left;" data-aos="fade-up">
+        <p style="font-size: 1.1rem; color: var(--text-dim);">
+            Je suis <strong>Sidoine Ahizigbe</strong>, un profil hybride entre l'ingénierie et le digital. 
+            Actuellement en <span style="color: var(--accent-secondary);">Génie Énergétique et Procédés à l'UNSTIM</span>, 
+            j'accompagne les marques dans leur transformation numérique avec une précision scientifique.
+        </p>
+    </div>
 </section>
 
-<section id="skills" class="section dark">
-  <h2>Compétences</h2>
-  <div class="cards">
-    <div class="card">Communication digitale</div>
-    <div class="card">Création de contenus</div>
-    <div class="card">Graphisme & design</div>
-    <div class="card">Montage vidéo</div>
-    <div class="card">Gestion de projets</div>
-    <div class="card">Informatique & web</div>
-  </div>
+<section id="skills" class="section">
+    <h2 data-aos="fade-up">Compétences</h2>
+    <div class="cards">
+        <div class="card" data-aos="flip-left"><i class="fas fa-bullhorn fa-2x" style="color:var(--accent-secondary)"></i><br><br>Communication</div>
+        <div class="card" data-aos="flip-left" data-aos-delay="100"><i class="fas fa-video fa-2x" style="color:var(--accent-secondary)"></i><br><br>Montage Vidéo</div>
+        <div class="card" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-bolt fa-2x" style="color:var(--accent-secondary)"></i><br><br>Génie Énergétique</div>
+        <div class="card" data-aos="flip-left" data-aos-delay="300"><i class="fas fa-code fa-2x" style="color:var(--accent-secondary)"></i><br><br>Dev Web & SEO</div>
+    </div>
 </section>
 
 <section id="projects" class="section">
-  <h2>Projets</h2>
-  <div class="cards">
-    <div class="card">BÉNIN BOOST DIGITAL SERVICE</div>
-    <div class="card">Communication JORÉ-CULEP</div>
-    <div class="card">AERZUA – Chargé de communication</div>
-  </div>
+    <h2 data-aos="fade-up">Projets</h2>
+    <div class="project-grid">
+        <div class="project-card" data-aos="zoom-in">
+            <div class="project-img"><img src="benin-boost.jpg" alt="Bénin Boost"></div>
+            <div class="project-info"><h3>BÉNIN BOOST</h3><p>Agence Digitale.</p></div>
+        </div>
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="project-img"><img src="jore-culep.jpg" alt="JORÉ-CULEP"></div>
+            <div class="project-info"><h3>JORÉ-CULEP</h3><p>Communication Événementielle.</p></div>
+        </div>
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="project-img"><img src="aerzua.jpg" alt="AERZUA"></div>
+            <div class="project-info"><h3>AERZUA</h3><p>Stratégie Média.</p></div>
+        </div>
+    </div>
 </section>
 
-<section id="contact" class="section dark center">
-  <h2>Contact</h2>
-  <p>Une collaboration, un projet ou une opportunité ? Parlons-en.</p>
-  <a href="mailto:sidoineah964@gmail.com" class="btn primary">Envoyer un email</a>
+<section id="contact" class="section" style="text-align: center;">
+    <h2 data-aos="fade-up">Contact</h2>
+    <div class="card" style="max-width: 600px; margin: 0 auto;" data-aos="zoom-out">
+        <p style="margin-bottom: 25px;">Une collaboration ? Parlons-en sur mes réseaux.</p>
+        
+        <div class="social-container">
+            <a href="https://linkedin.com/in/ton-profil" target="_blank" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/ton-profil" target="_blank" class="social-circle"><i class="fab fa-github"></i></a>
+            <a href="https://wa.me/229XXXXXXXX" target="_blank" class="social-circle"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/ton-profil" target="_blank" class="social-circle"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/ton-profil" target="_blank" class="social-circle"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://facebook.com/ton-profil" target="_blank" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/ton-profil" target="_blank" class="social-circle"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <a href="mailto:sidoineah964@gmail.com" class="btn primary">Envoyer un Email</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-dim);">Portfolio : sidoine-portfolio.vercel.app</p>
+    </div>
 </section>
 
 <footer>
-  © 2026 — Sidoine Ahizigbe
+    © 2026 — Sidoine Ahizigbe • Ingénieur Énergétique & Digital Entrepreneur
 </footer>
 
-<script src="script.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // 1. Initialisation AOS
+    AOS.init({ duration: 1000, once: false });
+
+    // 2. Animation Typewriter
+    const textElement = document.getElementById('typewriter');
+    const words = ["Génie Énergétique", "Stratégie Digitale", "Création de Contenu", "Entrepreneuriat"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+            textElement.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textElement.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 150;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            isDeleting = true;
+            typeSpeed = 2000;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            typeSpeed = 500;
+        }
+        setTimeout(type, typeSpeed);
+    }
+    document.addEventListener('DOMContentLoaded', type);
+
+    // 3. Effet Header au Scroll
+    window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+            header.style.padding = "12px 8%";
+            header.style.background = "rgba(5, 5, 5, 0.95)";
+        } else {
+            header.style.padding = "20px 8%";
+            header.style.background = "transparent";
+        }
+    });
+</script>
 </body>
 </html>
