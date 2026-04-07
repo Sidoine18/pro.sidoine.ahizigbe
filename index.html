@@ -256,27 +256,7 @@
     <p style="font-size: 0.8rem; color: var(--text-dim);">&copy; 2026 Sidoine Ahizigbe.</p>
 </footer>
 
-    <a href="https://wa.me/2290195498359" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <script>
-        // 1. Custom Cursor
-        const cursor = document.querySelector('#cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        // 2. Sticky Navbar & Active Links
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            nav.classList.toggle('sticky', window.scrollY > 0);
-        });
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
     // 1. Initialisation AOS
     AOS.init({ duration: 1000, once: false });
 
@@ -322,6 +302,13 @@
             header.style.background = "transparent";
         }
     });
+        // 2. Sticky Navbar & Active Links
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </script>
 </body>
 </html>
