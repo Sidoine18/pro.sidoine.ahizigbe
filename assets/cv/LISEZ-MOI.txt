@@ -1,0 +1,7 @@
+=== CV À REMPLACER ===
+
+Copiez votre CV dans ce dossier avec ce nom exact :
+
+  mon-cv.pdf
+
+Ce fichier sera téléchargé quand un visiteur clique sur "Télécharger le CV".

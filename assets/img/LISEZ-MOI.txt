@@ -1,0 +1,15 @@
+=== IMAGES À REMPLACER ===
+
+Copiez vos images dans ce dossier avec ces noms exacts :
+
+- sidoine-ahizigbe.jpg   → Votre photo de profil
+- aerzua.jpg             → Capture AERZUA Academy
+- campusevent.jpg        → Capture CampusEvent
+- rams.jpg               → Capture RAMS Basketball Academy
+- benin-boost.jpg        → Image Bénin Boost Digital
+- 10000-codeurs.jpg      → Image 10 000 Codeurs
+- digits.jpg             → Image Digit's Crea Awards
+- miabe.jpg              → Image MIABE Hackathon
+- technova.jpg           → Image Tech Nova Challenge
+
+Format recommandé : JPG ou WebP, largeur minimale 600px.

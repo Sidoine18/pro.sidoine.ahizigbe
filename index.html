@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidoine Ahizigbe | Génie Énergétique & Entrepreneur Digital</title>
+    <meta name="description" content="Portfolio de Sidoine Ahizigbe, étudiant en Génie Énergétique à l'UNSTIM et entrepreneur digital au Bénin.">
+    <meta name="google-site-verification" content="lTDmpKoWq0cBRLchibIxvvgwFDMB2FmTrdaGp0x69pY" />
+
+    <!-- Google Fonts: Clash Display + Cabinet Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Fallback via Bunny Fonts if Clash isn't available -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ====== LOADER ====== -->
+<div class="loader" id="loader">
+    <div class="loader-inner">
+        <span class="loader-name">SA</span>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+</div>
+
+<!-- ====== CURSOR GLOW ====== -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ====== CANVAS BACKGROUND ====== -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- ====== SCROLL PROGRESS ====== -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ====== HEADER ====== -->
+<header class="header" id="header">
+    <a href="#home" class="header-logo">
+        <span class="logo-text">Sidoine<em>.</em></span>
+    </a>
+
+    <nav class="header-nav" id="headerNav">
+        <a href="#about"    class="nav-link" data-section="about">À propos</a>
+        <a href="#services" class="nav-link" data-section="services">Services</a>
+        <a href="#projects" class="nav-link" data-section="projects">Projets</a>
+        <a href="#skills"   class="nav-link" data-section="skills">Compétences</a>
+        <a href="#cv"       class="nav-link" data-section="cv">CV</a>
+        <a href="#contact"  class="nav-link nav-cta" data-section="contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+            <i class="fas fa-sun" id="themeIcon"></i>
+        </button>
+        <button class="burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ====== MOBILE MENU ====== -->
+<div class="mobile-overlay" id="mobileOverlay">
+    <nav class="mobile-nav">
+        <a href="#about"    onclick="closeMobileMenu()">À propos</a>
+        <a href="#services" onclick="closeMobileMenu()">Services</a>
+        <a href="#projects" onclick="closeMobileMenu()">Projets</a>
+        <a href="#skills"   onclick="closeMobileMenu()">Compétences</a>
+        <a href="#cv"       onclick="closeMobileMenu()">CV</a>
+        <a href="#contact"  onclick="closeMobileMenu()" class="m-cta">Contact</a>
+    </nav>
+</div>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="home">
+    <div class="hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Bénin · UNSTIM · Digital
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-line" data-text="Sidoine">Sidoine</span>
+                <span class="title-line title-accent" data-text="Ahizigbe">Ahizigbe</span>
+            </h1>
+
+            <p class="hero-typewriter">
+                <span class="tw-prefix">Spécialiste en&nbsp;</span>
+                <span id="typewriter" class="tw-word"></span>
+            </p>
+
+            <p class="hero-desc">
+                Étudiant en Génie Énergétique & Entrepreneur Digital. Je fusionne rigueur technique et créativité numérique pour construire des projets qui ont de l'impact.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Me contacter</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#projects" class="btn btn-outline">
+                    <span>Voir mes projets</span>
+                    <i class="fas fa-eye"></i>
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hstat"><strong>10+</strong><span>Projets</span></div>
+                <div class="hstat-divider"></div>
+                <div class="hstat"><strong>5+</strong><span>Plateformes</span></div>
+                <div class="hstat-divider"></div>
+                <div class="hstat"><strong>12+</strong><span>Événements</span></div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="photo-container">
+                <div class="photo-ring ring-outer"></div>
+                <div class="photo-ring ring-inner"></div>
+                <div class="photo-blob">
+                    <!-- Remplace sidoine-ahizigbe.jpg par ta photo -->
+                    <img src="assets/img/sidoine-ahizigbe.jpg" alt="Sidoine Ahizigbe" onerror="this.style.display='none';this.parentElement.classList.add('no-photo')">
+                    <div class="photo-initials">SA</div>
+                </div>
+                <div class="photo-badge pb-top">
+                    <i class="fas fa-bolt"></i> Génie Énergétique
+                </div>
+                <div class="photo-badge pb-bottom">
+                    <i class="fas fa-rocket"></i> Entrepreneur
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="hero-scroll-cue">
+        <div class="scroll-line"></div>
+        <span>scroll</span>
+    </div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section class="section" id="about">
+    <div class="section-inner">
+        <div class="section-header gsap-reveal">
+            <span class="section-eyebrow">Qui suis-je</span>
+            <h2 class="section-title">Profil hybride<br>entre ingénierie & digital.</h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-text gsap-reveal">
+                <p>Je suis <strong>Sidoine Ahizigbe</strong>, étudiant en <em>Génie Énergétique et Procédés à l'UNSTIM</em> au Bénin. Mon parcours atypique m'a amené à combiner expertise technique et vision entrepreneuriale.</p>
+                <p>J'accompagne les marques dans leur transformation numérique avec une précision quasi scientifique : stratégie, contenu, visibilité — tout est mesuré, optimisé, livré.</p>
+                <p>Ambassadeur de projets tech nationaux et internationaux, je suis convaincu que la technologie bien utilisée peut transformer l'Afrique.</p>
+                <a href="#contact" class="btn btn-primary mt-btn">
+                    <span>Collaborer</span>
+                    <i class="fas fa-handshake"></i>
+                </a>
+            </div>
+
+            <div class="about-cards gsap-stagger">
+                <div class="acard">
+                    <div class="acard-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div>
+                        <strong>UNSTIM Bénin</strong>
+                        <p>Génie Énergétique & Procédés</p>
+                    </div>
+                </div>
+                <div class="acard">
+                    <div class="acard-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <strong>Abomey, Bénin</strong>
+                        <p>Disponible en remote</p>
+                    </div>
+                </div>
+                <div class="acard">
+                    <div class="acard-icon"><i class="fas fa-language"></i></div>
+                    <div>
+                        <strong>Langues</strong>
+                        <p>Français · Anglais (notions)</p>
+                    </div>
+                </div>
+                <div class="acard">
+                    <div class="acard-icon"><i class="fas fa-trophy"></i></div>
+                    <div>
+                        <strong>Ambassadeur</strong>
+                        <p>MIABE · 10 000 Codeurs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== SERVICES ====== -->
+<section class="section section-alt" id="services">
+    <div class="section-inner">
+        <div class="section-header gsap-reveal">
+            <span class="section-eyebrow">Ce que je fais</span>
+            <h2 class="section-title">Services &amp; Expertises</h2>
+        </div>
+
+        <div class="services-grid gsap-stagger">
+            <div class="service-card">
+                <div class="sc-number">01</div>
+                <div class="sc-icon"><i class="fas fa-bullhorn"></i></div>
+                <h3>Communication Digitale</h3>
+                <p>Stratégie de contenu, campagnes réseaux sociaux, visibilité en ligne et brand awareness.</p>
+                <div class="sc-tags">
+                    <span>Social Media</span><span>Content</span><span>SEO</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="sc-number">02</div>
+                <div class="sc-icon"><i class="fas fa-video"></i></div>
+                <h3>Montage Vidéo</h3>
+                <p>Création et édition de contenus vidéo percutants pour marques, événements et réseaux.</p>
+                <div class="sc-tags">
+                    <span>Reels</span><span>Édition</span><span>Motion</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="sc-number">03</div>
+                <div class="sc-icon"><i class="fas fa-code"></i></div>
+                <h3>Développement Web</h3>
+                <p>Sites web modernes, plateformes, automatisation et intégration IA.</p>
+                <div class="sc-tags">
+                    <span>HTML/CSS</span><span>JS</span><span>IA</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="sc-number">04</div>
+                <div class="sc-icon"><i class="fas fa-palette"></i></div>
+                <h3>Design & Branding</h3>
+                <p>Identité visuelle, création graphique, Canva, chartes graphiques cohérentes.</p>
+                <div class="sc-tags">
+                    <span>Canva</span><span>Branding</span><span>UI</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="sc-number">05</div>
+                <div class="sc-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Génie Énergétique</h3>
+                <p>Froid & climatisation, systèmes thermiques, procédés industriels.</p>
+                <div class="sc-tags">
+                    <span>Thermique</span><span>Froid</span><span>Énergie</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="sc-number">06</div>
+                <div class="sc-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Entrepreneuriat</h3>
+                <p>Lancement de projets, coordination d'équipe, leadership et gestion de communauté.</p>
+                <div class="sc-tags">
+                    <span>Startup</span><span>Leadership</span><span>Gestion</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== PROJECTS ====== -->
+<section class="section" id="projects">
+    <div class="section-inner">
+        <div class="section-header gsap-reveal">
+            <span class="section-eyebrow">Portfolio</span>
+            <h2 class="section-title">Projets & Engagements</h2>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="filter-tabs gsap-reveal">
+            <button class="ftab active" data-filter="all">Tous</button>
+            <button class="ftab" data-filter="plateforme">Plateformes</button>
+            <button class="ftab" data-filter="evenement">Événements</button>
+            <button class="ftab" data-filter="agence">Agences</button>
+        </div>
+
+        <div class="projects-grid gsap-stagger">
+            <div class="pcard" data-category="plateforme">
+                <div class="pcard-thumb">
+                    <!-- Remplace aerzua.jpg par l'image du projet -->
+                    <img src="assets/img/aerzua.jpg" alt="AERZUA Academy" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="pcard-overlay"></div>
+                    <span class="pcard-badge">Plateforme</span>
+                </div>
+                <div class="pcard-body">
+                    <h3>AERZUA Academy</h3>
+                    <p>Plateforme académique centralisant épreuves et corrigés pour les étudiants de l'UNSTIM.</p>
+                    <div class="pcard-foot">
+                        <span class="pcard-role"><i class="fas fa-user"></i> Fondateur · Dev</span>
+                        <a href="https://aerzaunstimacademy.vercel.app/" target="_blank" class="pcard-link">
+                            Voir <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard" data-category="plateforme">
+                <div class="pcard-thumb">
+                    <img src="assets/img/campusevent.jpg" alt="CampusEvent" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="pcard-overlay"></div>
+                    <span class="pcard-badge">Plateforme</span>
+                </div>
+                <div class="pcard-body">
+                    <h3>CampusEvent</h3>
+                    <p>Plateforme de gestion d'événements universitaires en temps réel.</p>
+                    <div class="pcard-foot">
+                        <span class="pcard-role"><i class="fas fa-user"></i> Chef Projet</span>
+                        <a href="https://campus-events-lilac.vercel.app/" target="_blank" class="pcard-link">
+                            Voir <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard" data-category="plateforme">
+                <div class="pcard-thumb">
+                    <img src="assets/img/rams.jpg" alt="RAMS Basketball Academy" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="pcard-overlay"></div>
+                    <span class="pcard-badge">Plateforme</span>
+                </div>
+                <div class="pcard-body">
+                    <h3>RAMS Basketball Academy</h3>
+                    <p>Plateforme de l'académie proposant un encadrement complet — sport, informatique, anglais.</p>
+                    <div class="pcard-foot">
+                        <span class="pcard-role"><i class="fas fa-user"></i> Développeur</span>
+                        <a href="https://ramsbasketballacademy.vercel.app/" target="_blank" class="pcard-link">
+                            Voir <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard" data-category="agence">
+                <div class="pcard-thumb">
+                    <img src="assets/img/benin-boost.jpg" alt="Bénin Boost Digital" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="pcard-overlay"></div>
+                    <span class="pcard-badge">Agence</span>
+                </div>
+                <div class="pcard-body">
+                    <h3>Bénin Boost Digital</h3>
+                    <p>Agence spécialisée en communication digitale, création de contenus et stratégie de visibilité.</p>
+                    <div class="pcard-foot">
+                        <span class="pcard-role"><i class="fas fa-user"></i> Cofondateur</span>
+                        <span class="pcard-wip">En développement</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard" data-category="evenement">
+                <div class="pcard-thumb">
+                    <img src="assets/img/10000-codeurs.jpg" alt="10000 Codeurs" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="pcard-overlay"></div>
+                    <span class="pcard-badge">Événement</span>
+                </div>
+                <div class="pcard-body">
+                    <h3>10 000 Codeurs 2026</h3>
+                    <p>Responsable ambassadeurs, coordination des appels à projets et mobilisation des participants innovants.</p>
+                    <div class="pcard-foot">
+                        <span class="pcard-role"><i class="fas fa-user"></i> Ambassadeur</span>
+                        <span class="pcard-wip">Programme national</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard" data-category="evenement">
+                <div class="pcard-thumb">
+                    <img src="assets/img/digits.jpg" alt="Digit's Crea Awards" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="pcard-overlay"></div>
+                    <span class="pcard-badge">Événement</span>
+                </div>
+                <div class="pcard-body">
+                    <h3>Digit's Crea Awards 2026</h3>
+                    <p>Comité de pilotage & Responsable cellule de communication — pôle Abomey.</p>
+                    <div class="pcard-foot">
+                        <span class="pcard-role"><i class="fas fa-user"></i> Comité de pilotage</span>
+                        <span class="pcard-wip">Édition 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard" data-category="evenement">
+                <div class="pcard-thumb">
+                    <img src="assets/img/miabe.jpg" alt="MIABE Hackathon" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="pcard-overlay"></div>
+                    <span class="pcard-badge">Hackathon</span>
+                </div>
+                <div class="pcard-body">
+                    <h3>MIABE Hackathon 2026</h3>
+                    <p>Ambassadeur Bénin — promotion, mobilisation des participants, représentation nationale à l'international.</p>
+                    <div class="pcard-foot">
+                        <span class="pcard-role"><i class="fas fa-user"></i> Ambassadeur Bénin</span>
+                        <span class="pcard-wip">International</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard" data-category="evenement">
+                <div class="pcard-thumb">
+                    <img src="assets/img/technova.jpg" alt="Tech Nova Challenge" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="pcard-overlay"></div>
+                    <span class="pcard-badge">Challenge</span>
+                </div>
+                <div class="pcard-body">
+                    <h3>Tech Nova Challenge 2026</h3>
+                    <p>Service communication — stratégie de visibilité, création de contenus et promotion auprès du public cible.</p>
+                    <div class="pcard-foot">
+                        <span class="pcard-role"><i class="fas fa-user"></i> Communication</span>
+                        <span class="pcard-wip">Édition 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== SKILLS ====== -->
+<section class="section section-alt" id="skills">
+    <div class="section-inner">
+        <div class="section-header gsap-reveal">
+            <span class="section-eyebrow">Maîtrise</span>
+            <h2 class="section-title">Stack & Compétences</h2>
+        </div>
+
+        <div class="skills-layout">
+            <div class="skill-bars gsap-stagger">
+                <div class="skill-bar-item">
+                    <div class="sb-label"><span>Communication Digitale</span><span class="sb-pct">90%</span></div>
+                    <div class="sb-track"><div class="sb-fill" data-width="90"></div></div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="sb-label"><span>Montage Vidéo</span><span class="sb-pct">82%</span></div>
+                    <div class="sb-track"><div class="sb-fill" data-width="82"></div></div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="sb-label"><span>Développement Web</span><span class="sb-pct">75%</span></div>
+                    <div class="sb-track"><div class="sb-fill" data-width="75"></div></div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="sb-label"><span>Design & Branding</span><span class="sb-pct">80%</span></div>
+                    <div class="sb-track"><div class="sb-fill" data-width="80"></div></div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="sb-label"><span>Génie Énergétique</span><span class="sb-pct">85%</span></div>
+                    <div class="sb-track"><div class="sb-fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="sb-label"><span>Entrepreneuriat</span><span class="sb-pct">88%</span></div>
+                    <div class="sb-track"><div class="sb-fill" data-width="88"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-tags gsap-stagger">
+                <h3>Outils & Technologies</h3>
+                <div class="tags-cloud">
+                    <span class="stag">Canva</span>
+                    <span class="stag">CapCut</span>
+                    <span class="stag">HTML5</span>
+                    <span class="stag">CSS3</span>
+                    <span class="stag">JavaScript</span>
+                    <span class="stag">Vercel</span>
+                    <span class="stag">GitHub</span>
+                    <span class="stag">ChatGPT</span>
+                    <span class="stag">Figma</span>
+                    <span class="stag">WordPress</span>
+                    <span class="stag">Meta Ads</span>
+                    <span class="stag">AutoCAD</span>
+                    <span class="stag">MS Office</span>
+                    <span class="stag">Notion</span>
+                    <span class="stag">Google Workspace</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CV ====== -->
+<section class="section cv-section" id="cv">
+    <div class="section-inner">
+        <div class="section-header gsap-reveal">
+            <span class="section-eyebrow">Mon parcours</span>
+            <h2 class="section-title">Curriculum Vitae</h2>
+        </div>
+
+        <div class="cv-card gsap-reveal">
+            <div class="cv-preview">
+                <div class="cv-mockup">
+                    <div class="cv-mock-header">
+                        <div class="cv-mock-avatar"></div>
+                        <div class="cv-mock-info">
+                            <div class="cv-mock-line long"></div>
+                            <div class="cv-mock-line medium"></div>
+                        </div>
+                    </div>
+                    <div class="cv-mock-lines">
+                        <div class="cv-mock-line full"></div>
+                        <div class="cv-mock-line three-q"></div>
+                        <div class="cv-mock-line half"></div>
+                        <div class="cv-mock-line full"></div>
+                        <div class="cv-mock-line three-q"></div>
+                    </div>
+                    <div class="cv-mock-glow"></div>
+                </div>
+            </div>
+            <div class="cv-info">
+                <h3>Sidoine Ahizigbe</h3>
+                <p class="cv-sub">Génie Énergétique & Entrepreneur Digital · UNSTIM Bénin</p>
+                <div class="cv-highlights">
+                    <div class="cv-hl"><i class="fas fa-check-circle"></i> Formation en Génie Énergétique & Procédés</div>
+                    <div class="cv-hl"><i class="fas fa-check-circle"></i> Entrepreneur & Fondateur de plateformes</div>
+                    <div class="cv-hl"><i class="fas fa-check-circle"></i> Ambassadeur de programmes tech nationaux</div>
+                    <div class="cv-hl"><i class="fas fa-check-circle"></i> Expert communication digitale</div>
+                </div>
+                <div class="cv-actions">
+                    <!-- Remplace assets/cv/mon-cv.pdf par ton vrai CV -->
+                    <a href="assets/cv/mon-cv.pdf" download="CV-Sidoine-Ahizigbe.pdf" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        <span>Télécharger le CV</span>
+                    </a>
+                    <a href="assets/cv/mon-cv.pdf" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-eye"></i>
+                        <span>Voir le CV</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== TESTIMONIALS ====== -->
+<section class="section section-alt" id="testimonials">
+    <div class="section-inner">
+        <div class="section-header gsap-reveal">
+            <span class="section-eyebrow">Ils témoignent</span>
+            <h2 class="section-title">Ce qu'on dit de moi</h2>
+        </div>
+
+        <div class="testi-slider gsap-reveal">
+            <div class="testi-track" id="testiTrack">
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p>"Sidoine a une capacité rare à comprendre les enjeux techniques ET digitaux. Son travail sur notre plateforme était précis, rapide et professionnel."</p>
+                    <div class="testi-author">
+                        <div class="ta-avatar">A</div>
+                        <div>
+                            <strong>Alpha K.</strong>
+                            <span>Étudiant UNSTIM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p>"Un entrepreneur sérieux et créatif. Sa vision du digital au Bénin est inspirante. Il livre toujours ce qu'il promet."</p>
+                    <div class="testi-author">
+                        <div class="ta-avatar">M</div>
+                        <div>
+                            <strong>Marie B.</strong>
+                            <span>Coordinatrice événementielle</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p>"Sa gestion de notre communication pour le hackathon était exemplaire. Mobilisation efficace, contenu de qualité, résultats visibles."</p>
+                    <div class="testi-author">
+                        <div class="ta-avatar">J</div>
+                        <div>
+                            <strong>Jean-Paul O.</strong>
+                            <span>Organisateur MIABE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-controls">
+                <button class="tc-btn" id="testiPrev"><i class="fas fa-chevron-left"></i></button>
+                <div class="tc-dots" id="testiDots"></div>
+                <button class="tc-btn" id="testiNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section class="section" id="contact">
+    <div class="section-inner">
+        <div class="section-header gsap-reveal">
+            <span class="section-eyebrow">Travaillons ensemble</span>
+            <h2 class="section-title">Une idée ? Parlons-en.</h2>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-form-wrap gsap-reveal">
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="contactName">Nom complet</label>
+                        <input type="text" id="contactName" name="name" placeholder="Votre nom" required>
+                        <span class="form-err" id="errName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="votre@email.com" required>
+                        <span class="form-err" id="errEmail"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Sujet</label>
+                        <input type="text" id="contactSubject" name="subject" placeholder="De quoi s'agit-il ?">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMsg">Message</label>
+                        <textarea id="contactMsg" name="message" rows="5" placeholder="Décrivez votre projet ou votre demande..." required></textarea>
+                        <span class="form-err" id="errMsg"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                        <span>Envoyer le message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i> Message envoyé ! Je vous répondrai très bientôt.
+                    </div>
+                </form>
+            </div>
+
+            <div class="contact-info gsap-reveal">
+                <div class="ci-card">
+                    <h3>Contact direct</h3>
+                    <a href="mailto:sidoineah964@gmail.com" class="ci-item">
+                        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <strong>Email</strong>
+                            <span>sidoineah964@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/2290195498359" target="_blank" class="ci-item ci-whatsapp">
+                        <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <span>+229 01 95 49 83 59</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ci-card">
+                    <h3>Réseaux sociaux</h3>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/sidoine-ahizigbe-34846a335" target="_blank" class="slink slink-li"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+                        <a href="https://github.com/sidoine18" target="_blank" class="slink slink-gh"><i class="fab fa-github"></i><span>GitHub</span></a>
+                        <a href="https://www.instagram.com/sidoineahizigbe2025" target="_blank" class="slink slink-ig"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+                        <a href="https://www.facebook.com/share/1TkNXM5KWp/" target="_blank" class="slink slink-fb"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+                        <a href="https://youtube.com/@sidoineah-bj" target="_blank" class="slink slink-yt"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+                        <a href="https://www.tiktok.com/@sidoineahizigbe" target="_blank" class="slink slink-tt"><i class="fab fa-tiktok"></i><span>TikTok</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="#home" class="footer-logo">Sidoine<em>.</em></a>
+            <p>Génie Énergétique & Entrepreneur Digital<br>Bénin — UNSTIM</p>
+        </div>
+        <div class="footer-links">
+            <a href="#about">À propos</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projets</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/sidoine-ahizigbe-34846a335" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/sidoine18" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/sidoineahizigbe2025" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@sidoineahizigbe" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com/@sidoineah-bj" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Sidoine Ahizigbe</span> Bénin</p>
+        <a href="#home" class="back-top"><i class="fas fa-arrow-up"></i></a>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
